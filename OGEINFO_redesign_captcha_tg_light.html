@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>OGEINFO — подготовка к ОГЭ по информатике (2026)</title>
+  <meta name="description" content="OGEINFO: структура ОГЭ по информатике, баллы и оценки, краткий разбор заданий 1–16, шпоры и тайм-менеджмент." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20128%20128%27%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%0A%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%237c3aed%27/%3E%0A%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%2306b6d4%27/%3E%0A%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%27128%27%20height%3D%27128%27%20rx%3D%2728%27%20fill%3D%27%23f8fafc%27/%3E%0A%3Crect%20x%3D%2715%27%20y%3D%2715%27%20width%3D%2798%27%20height%3D%2798%27%20rx%3D%2724%27%20fill%3D%27url%28%23g%29%27%20opacity%3D%270.22%27/%3E%0A%3Cpath%20d%3D%27M28%2037c0-6.6%205.4-12%2012-12h48l20%2020v46c0%206.6-5.4%2012-12%2012H40c-6.6%200-12-5.4-12-12V37Z%27%20fill%3D%27none%27%20stroke%3D%27url%28%23g%29%27%20stroke-width%3D%278%27%20stroke-linejoin%3D%27round%27/%3E%0A%3Cpath%20d%3D%27M88%2025v18c0%206.6%205.4%2012%2012%2012h8%27%20fill%3D%27none%27%20stroke%3D%27%23a78bfa%27%20stroke-width%3D%278%27%20stroke-linecap%3D%27round%27/%3E%0A%3Cpath%20d%3D%27M42%2070h46M42%2084h30%27%20stroke%3D%27%230f172a%27%20stroke-width%3D%278%27%20stroke-linecap%3D%27round%27/%3E%0A%3Ccircle%20cx%3D%2734%27%20cy%3D%2734%27%20r%3D%276%27%20fill%3D%27%2322c55e%27/%3E%0A%3C/svg%3E" />
+  <style>
+    :root{
+      --bg:#f6f8ff;
+      --bg2:#eef4ff;
+      --panel:rgba(255,255,255,.78);
+      --panel-strong:rgba(255,255,255,.94);
+      --line:rgba(99,102,241,.12);
+      --line-strong:rgba(14,165,233,.28);
+      --text:#182235;
+      --muted:#61728f;
+      --cyan:#22d3ee;
+      --violet:#8b5cf6;
+      --pink:#ec4899;
+      --green:#22c55e;
+      --shadow:0 24px 80px rgba(77,95,140,.18);
+      --radius:24px;
+      --radius-sm:18px;
+      --max:1240px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(900px 580px at 8% 12%, rgba(14,165,233,.12), transparent 60%),
+        radial-gradient(900px 700px at 90% 4%, rgba(139,92,246,.14), transparent 60%),
+        radial-gradient(700px 600px at 52% 100%, rgba(236,72,153,.08), transparent 62%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    body.locked{overflow:hidden}
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.46) 0, transparent 24%),
+        repeating-linear-gradient(90deg, rgba(99,102,241,.04) 0 1px, transparent 1px 90px),
+        repeating-linear-gradient(0deg, rgba(14,165,233,.04) 0 1px, transparent 1px 90px);
+      pointer-events:none;
+      opacity:.7;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 96px; position:relative; z-index:2}
+
+    .blob{position:fixed; border-radius:999px; filter:blur(45px); opacity:.28; pointer-events:none; z-index:0}
+    .blob.b1{width:320px;height:320px;left:-90px;top:110px;background:var(--violet)}
+    .blob.b2{width:260px;height:260px;right:6%;top:50px;background:var(--cyan)}
+    .blob.b3{width:240px;height:240px;left:44%;bottom:50px;background:var(--pink)}
+
+    .glass{
+      background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(245,248,255,.78));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+    }
+    .hero{padding:26px; position:relative; overflow:hidden}
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:radial-gradient(520px 220px at 0% 0%, rgba(34,211,238,.16), transparent 65%), radial-gradient(520px 280px at 100% 0%, rgba(139,92,246,.18), transparent 62%);
+      pointer-events:none;
+    }
+
+    header.topbar{position:sticky; top:0; z-index:15; padding:18px 0 14px; backdrop-filter:blur(10px); background:linear-gradient(180deg, rgba(246,248,255,.72), rgba(246,248,255,.18));}
+    .topbar-inner{max-width:var(--max); margin:0 auto; padding:0 18px; display:flex; align-items:center; gap:14px;}
+    .brand{display:flex; align-items:center; gap:14px; min-width:0}
+    .brand-mark{
+      width:52px; height:52px; border-radius:18px; position:relative;
+      background:linear-gradient(135deg, rgba(139,92,246,.95), rgba(34,211,238,.92));
+      box-shadow:0 12px 30px rgba(34,211,238,.28);
+      flex:0 0 auto;
+    }
+    .brand-mark::before{content:""; position:absolute; inset:8px; border-radius:14px; border:2px solid rgba(255,255,255,.52);}
+    .brand-mark::after{content:"</>"; position:absolute; inset:0; display:grid; place-items:center; font-family:var(--mono); font-weight:800; font-size:16px; color:#fff;}
+    .brand-text{min-width:0}
+    .brand-title{font-weight:900; letter-spacing:.08em; text-transform:uppercase; font-size:18px;}
+    .brand-title span{color:var(--cyan)}
+    .brand-sub{color:var(--muted); font-size:13px; margin-top:3px}
+    .header-links{margin-left:auto; display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+
+    .button, button{font:inherit}
+    .button{
+      appearance:none; border:1px solid rgba(148,163,184,.16); color:var(--text); text-decoration:none;
+      background:rgba(255,255,255,.72); padding:12px 16px; border-radius:999px; display:inline-flex; align-items:center; gap:10px;
+      cursor:pointer; transition:transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .button:hover{transform:translateY(-1px); border-color:rgba(34,211,238,.35); background:rgba(226,247,255,.88); box-shadow:0 10px 30px rgba(34,211,238,.12)}
+    .button.primary{background:linear-gradient(135deg, rgba(34,211,238,.16), rgba(139,92,246,.16)); border-color:rgba(34,211,238,.26)}
+    .button.tg{background:linear-gradient(135deg, rgba(34,211,238,.20), rgba(14,165,233,.10));}
+    .button.ghost{background:rgba(255,255,255,.58)}
+    .button.sm{padding:10px 13px; font-size:14px}
+    .chip-row{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{padding:8px 12px; border-radius:999px; border:1px solid rgba(148,163,184,.14); background:rgba(255,255,255,.84); color:var(--muted); font-size:13px}
+    .chip strong{color:var(--text)}
+
+    .hero-grid{display:grid; grid-template-columns:1.25fr .75fr; gap:18px; position:relative; z-index:1}
+    .hero h1{margin:0; font-size:clamp(32px, 4vw, 54px); line-height:1.02; max-width:12ch}
+    .lead{font-size:16px; line-height:1.68; color:var(--muted); max-width:60ch; margin:14px 0 0}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+    .stats{display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;}
+    .stat{padding:18px; border-radius:22px; border:1px solid rgba(148,163,184,.14); background:rgba(255,255,255,.72)}
+    .stat .k{font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em}
+    .stat .v{font-size:32px; font-weight:900; margin-top:8px}
+    .stat small{display:block; color:var(--muted); margin-top:8px; line-height:1.45}
+
+    .dock{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .dock .button[aria-current="page"]{background:linear-gradient(135deg, rgba(34,211,238,.18), rgba(139,92,246,.18)); border-color:rgba(34,211,238,.4)}
+
+    .section{margin-top:20px}
+    .section-card{padding:22px}
+    .section-head{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:16px}
+    .section h2{margin:0; font-size:24px}
+    .section p.sub{margin:8px 0 0; color:var(--muted); line-height:1.6}
+
+    .grid-2{display:grid; grid-template-columns:1.08fr .92fr; gap:18px;}
+    .stack{display:grid; gap:18px}
+
+    .search{width:100%; border-radius:18px; padding:15px 16px; background:rgba(255,255,255,.04); border:1px solid rgba(148,163,184,.16); color:var(--text); outline:none; transition:border-color .2s ease, box-shadow .2s ease}
+    .search:focus{border-color:rgba(34,211,238,.35); box-shadow:0 0 0 4px rgba(34,211,238,.08)}
+
+    .table-wrap{overflow:auto; border-radius:20px; border:1px solid rgba(148,163,184,.12); box-shadow: inset 0 1px 0 rgba(255,255,255,.35);}
+    table{width:100%; border-collapse:collapse; min-width:620px; background:rgba(255,255,255,.72)}
+    th, td{padding:14px 14px; border-bottom:1px solid rgba(148,163,184,.12); text-align:left; vertical-align:top;}
+    th{font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:#5d6f8c; background:rgba(34,211,238,.08)}
+    tr:last-child td{border-bottom:none}
+    .badge{display:inline-flex; min-width:38px; justify-content:center; padding:8px 10px; border-radius:999px; font-size:13px; font-weight:700; background:rgba(139,92,246,.20); border:1px solid rgba(139,92,246,.32)}
+    .mono{font-family:var(--mono)}
+
+    .panel-list{display:grid; gap:14px}
+    .tip{padding:18px; border-radius:22px; background:rgba(255,255,255,.04); border:1px solid rgba(148,163,184,.12)}
+    .tip h3{margin:0 0 10px; font-size:18px}
+    .tip p, .tip li{color:var(--muted); line-height:1.58}
+    .tip ul{margin:10px 0 0 18px; padding:0}
+
+    .grade-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:12px}
+    .grade-card{padding:18px; border-radius:20px; border:1px solid rgba(148,163,184,.12); background:rgba(255,255,255,.04); text-align:center}
+    .grade-card .mark{font-size:32px; font-weight:900}
+    .grade-card .range{margin-top:8px; color:var(--muted); font-family:var(--mono)}
+
+    .accordion{display:grid; gap:12px}
+    details.card-item{border:1px solid rgba(148,163,184,.14); border-radius:22px; background:rgba(255,255,255,.72); overflow:hidden}
+    details.card-item[open]{border-color:rgba(34,211,238,.34); box-shadow:0 16px 40px rgba(34,211,238,.08)}
+    details.card-item summary{list-style:none; cursor:pointer; padding:16px 18px; display:flex; gap:14px; align-items:flex-start}
+    details.card-item summary::-webkit-details-marker{display:none}
+    .sum-main{min-width:0; flex:1}
+    .sum-title{font-size:17px; font-weight:700; line-height:1.45}
+    .sum-meta{display:flex; gap:8px; flex-wrap:wrap; margin-left:auto}
+    .sum-mini{display:inline-flex; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,.05); border:1px solid rgba(148,163,184,.14); font-size:13px; color:var(--muted)}
+    .details-content{padding:0 18px 18px}
+    .details-content ul{margin:0 0 0 18px; padding:0}
+    .details-content li{color:var(--muted); line-height:1.65; margin:7px 0}
+    .example{margin-top:14px; padding:16px; border-radius:18px; border:1px solid rgba(34,211,238,.18); background:linear-gradient(180deg, rgba(34,211,238,.10), rgba(139,92,246,.08));}
+    .example-title{font-weight:700; margin-bottom:6px}
+    .example .mono{color:#24415d}
+
+    .timeline{display:grid; gap:12px}
+    .slot{display:grid; grid-template-columns:130px 1fr; gap:14px; padding:14px 16px; border-radius:20px; border:1px solid rgba(148,163,184,.12); background:rgba(255,255,255,.72)}
+    .slot .time{font-family:var(--mono); color:#4e6284}
+    .slot .desc{color:var(--muted); line-height:1.58}
+    .toggle-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px}
+
+    .timer-box{padding:20px; border-radius:24px; border:1px solid rgba(148,163,184,.12); background:rgba(255,255,255,.72)}
+    .timer-display{font-family:var(--mono); font-size:clamp(32px, 5vw, 56px); font-weight:900; letter-spacing:.08em}
+    .timer-note{margin-top:10px; color:var(--muted); line-height:1.6}
+    .target-grid{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .message-box{margin-top:14px; min-height:24px; color:#0f6b8f}
+
+    .cta-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:12px}
+    .cta-card{padding:18px; border-radius:22px; border:1px solid rgba(148,163,184,.12); background:rgba(255,255,255,.04)}
+    .cta-card h3{margin:0 0 10px; font-size:18px}
+    .cta-card p{margin:0 0 16px; color:var(--muted); line-height:1.6}
+
+    .fab{position:fixed; right:22px; bottom:22px; z-index:40; display:flex; align-items:flex-end; gap:12px}
+    .fab-actions{display:flex; flex-direction:column; gap:10px; align-items:flex-end; transform:translateY(10px) scale(.94); opacity:0; pointer-events:none; transition:.28s ease}
+    .fab.open .fab-actions{transform:translateY(0) scale(1); opacity:1; pointer-events:auto}
+    .fab-btn{width:64px; height:64px; border-radius:999px; border:none; cursor:pointer; color:#fff; box-shadow:0 18px 40px rgba(77,95,140,.24); background:linear-gradient(135deg, var(--violet), var(--cyan)); position:relative;}
+    .fab-btn .dots{display:grid; gap:5px; place-items:center}
+    .fab-btn .dots span{display:block; width:8px; height:8px; border-radius:999px; background:#fff}
+    .fab-action{white-space:nowrap; padding:12px 14px; border-radius:999px; border:1px solid rgba(148,163,184,.16); background:rgba(255,255,255,.96); color:var(--text); text-decoration:none; display:inline-flex; gap:10px; align-items:center; box-shadow:0 14px 34px rgba(0,0,0,.26);}
+    .fab-action .icon{width:28px; height:28px; border-radius:999px; display:grid; place-items:center; background:rgba(14,165,233,.10)}
+
+    .overlay{position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:20px; background:radial-gradient(circle at top, rgba(34,211,238,.10), transparent 42%), rgba(240,245,255,.88); backdrop-filter:blur(8px)}
+    .overlay[hidden]{display:none}
+    .gate{width:min(560px, 100%); padding:28px; border-radius:28px; border:1px solid rgba(148,163,184,.16); background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(243,247,255,.92)); box-shadow:var(--shadow)}
+    .gate h2{margin:0; font-size:28px}
+    .gate p{color:var(--muted); line-height:1.65}
+    .captcha-row{display:grid; grid-template-columns:1fr auto; gap:12px; margin-top:16px}
+    .captcha-box{padding:14px 16px; border-radius:18px; border:1px solid rgba(34,211,238,.18); background:rgba(255,255,255,.86); font-size:18px; font-weight:700}
+    .captcha-input{width:100%; padding:15px 16px; border-radius:18px; border:1px solid rgba(148,163,184,.18); background:rgba(255,255,255,.90); color:var(--text); outline:none}
+    .gate .error{min-height:22px; color:#c2415b; margin-top:10px}
+    .loading-bar{width:100%; height:14px; border-radius:999px; overflow:hidden; background:rgba(14,165,233,.10); border:1px solid rgba(148,163,184,.12); margin-top:18px}
+    .loading-fill{height:100%; width:0; background:linear-gradient(90deg, var(--cyan), var(--violet), var(--pink)); transition:width .18s ease}
+    .loading-meta{display:flex; justify-content:space-between; gap:14px; margin-top:10px; color:var(--muted); font-family:var(--mono); font-size:13px}
+
+    .app-shell.hidden{visibility:hidden; opacity:0; pointer-events:none}
+    footer{margin-top:26px; padding:20px; color:var(--muted); line-height:1.65; border-radius:24px; border:1px solid rgba(148,163,184,.12); background:rgba(255,255,255,.72)}
+
+    @media (max-width: 980px){
+      .hero-grid, .grid-2{grid-template-columns:1fr}
+      .grade-grid, .cta-grid{grid-template-columns:repeat(2, 1fr)}
+      .header-links{display:none}
+    }
+    @media (max-width: 760px){
+      .stats{grid-template-columns:1fr 1fr}
+      .slot{grid-template-columns:1fr}
+      .grade-grid, .cta-grid{grid-template-columns:1fr}
+      .captcha-row{grid-template-columns:1fr}
+      .fab{right:14px; bottom:14px}
+      .fab-btn{width:58px; height:58px}
+    }
+    @media (max-width: 520px){
+      .wrap{padding:18px 14px 92px}
+      .topbar-inner{padding:0 14px}
+      .hero{padding:18px}
+      .stats{grid-template-columns:1fr}
+      .dock{display:grid; grid-template-columns:1fr 1fr}
+      .button{justify-content:center}
+    }
+  </style>
+</head>
+<body class="locked">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <div class="overlay" id="captchaOverlay">
+    <div class="gate">
+      <div class="chip-row">
+        <div class="chip"><strong>Вход</strong> на сайт</div>
+        <div class="chip">Лёгкая капча</div>
+      </div>
+      <h2>Сначала быстрая проверка</h2>
+      <p>Чтобы открыть сайт, реши маленький пример. После этого появится короткая загрузка и откроется OGEINFO.</p>
+      <div class="captcha-row">
+        <div class="captcha-box" id="captchaQuestion">2 + 2 = ?</div>
+        <button class="button primary" id="captchaRefresh" type="button">Обновить пример</button>
+      </div>
+      <div style="margin-top:12px">
+        <input class="captcha-input" id="captchaInput" inputmode="numeric" autocomplete="off" placeholder="Введи ответ" />
+      </div>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+        <button class="button primary" id="captchaSubmit" type="button">Открыть сайт</button>
+      </div>
+      <div class="error" id="captchaError"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="loadingOverlay" hidden>
+    <div class="gate">
+      <div class="chip-row">
+        <div class="chip"><strong>OGEINFO</strong></div>
+        <div class="chip">Запуск модулей</div>
+      </div>
+      <h2>Загрузка сайта…</h2>
+      <p id="loadingText">Подготавливаем структуру экзамена и быстрые шпоры.</p>
+      <div class="loading-bar"><div class="loading-fill" id="loadingFill"></div></div>
+      <div class="loading-meta"><span id="loadingStatus">0%</span><span>инициализация</span></div>
+    </div>
+  </div>
+
+  <div id="appShell" class="app-shell hidden">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div class="brand-text">
+            <div class="brand-title">OGE<span>INFO</span></div>
+            <div class="brand-sub">Подготовка к ОГЭ по информатике • 2026</div>
+          </div>
+        </div>
+        <div class="header-links">
+          <a class="button tg sm" href="https://t.me/name_supports" target="_blank" rel="noopener">Обратная связь</a>
+          <a class="button primary sm" href="https://t.me/link_ogeinfo" target="_blank" rel="noopener">ТГ канал</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="glass hero">
+        <div class="hero-grid">
+          <div>
+            <div class="chip-row">
+              <div class="chip"><strong>Новый вход</strong> — капча + загрузка</div>
+              <div class="chip">Редизайн сайта</div>
+              <div class="chip">Быстрые ссылки Telegram</div>
+            </div>
+            <h1>Всё для подготовки к ОГЭ по информатике в одном месте</h1>
+            <p class="lead">Структура экзамена, краткие разборы, шпоры, таймер на 150 минут и быстрый доступ к обратной связи. Сайт оформлен в новом стиле и дополнен раскрывающимся меню из трёх точек.</p>
+            <div class="hero-actions">
+              <button class="button primary" type="button" data-route="structure">Смотреть структуру</button>
+              <button class="button" type="button" data-route="review">Открыть разбор</button>
+              <a class="button tg" href="https://t.me/name_supports" target="_blank" rel="noopener">Написать в Telegram</a>
+              <a class="button ghost" href="https://t.me/link_ogeinfo" target="_blank" rel="noopener">Перейти в канал</a>
+            </div>
+            <div class="dock" id="topTabs">
+              <button class="button sm" type="button" data-route="structure">Структура</button>
+              <button class="button sm" type="button" data-route="review">Краткий разбор</button>
+              <button class="button sm" type="button" data-route="cheats">Шпоры</button>
+              <button class="button sm" type="button" data-route="exam">Экзамен</button>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div class="k">Макс. балл</div>
+              <div class="v" id="kpiMax">21</div>
+              <small>Общий максимум по экзамену.</small>
+            </div>
+            <div class="stat">
+              <div class="k">Время</div>
+              <div class="v" id="kpiTime">150</div>
+              <small>На весь экзамен и компьютерную часть.</small>
+            </div>
+            <div class="stat">
+              <div class="k">Заданий</div>
+              <div class="v" id="kpiCount">16</div>
+              <small>С 1 по 16 номер.</small>
+            </div>
+            <div class="stat">
+              <div class="k">Минимум</div>
+              <div class="v" id="kpiMin">5</div>
+              <small>Чтобы пройти порог.</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-page="structure">
+        <div class="grid-2">
+          <div class="glass section-card">
+            <div class="section-head">
+              <div>
+                <h2>Структура и баллы</h2>
+                <p class="sub">Поиск по заданиям, отметки «готово» и таблица по каждому номеру.</p>
+              </div>
+            </div>
+            <input class="search" id="taskSearch" placeholder="Поиск по заданиям: логика, таблицы, системы счисления…" />
+            <div class="table-wrap" style="margin-top:16px">
+              <table aria-label="Структура заданий">
+                <thead>
+                  <tr>
+                    <th style="width:78px">№</th>
+                    <th>Что проверяют</th>
+                    <th style="width:92px">Уровень</th>
+                    <th style="width:90px">Баллы</th>
+                    <th style="width:118px">Готово</th>
+                  </tr>
+                </thead>
+                <tbody id="structureBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="glass section-card">
+              <div class="section-head">
+                <div>
+                  <h2>Шкала оценок</h2>
+                  <p class="sub">Быстрый ориентир по первичным баллам.</p>
+                </div>
+              </div>
+              <div class="grade-grid" id="gradeGrid"></div>
+            </div>
+
+            <div class="glass section-card">
+              <div class="section-head">
+                <div>
+                  <h2>Как поднимать результат</h2>
+                  <p class="sub">Короткая стратегия, если нужно быстрее набрать уверенные баллы.</p>
+                </div>
+              </div>
+              <div class="panel-list">
+                <div class="tip">
+                  <h3>Сначала забери базу</h3>
+                  <ul>
+                    <li>Сделай акцент на заданиях 1–12 — это самые быстрые баллы.</li>
+                    <li>Не сиди долго над одним номером: если застопорился, переходи дальше.</li>
+                    <li>Фиксируй типичные ошибки и возвращайся к ним позже.</li>
+                  </ul>
+                </div>
+                <div class="tip">
+                  <h3>Компьютерная часть</h3>
+                  <ul>
+                    <li>13: внимательно выполняй требования по оформлению.</li>
+                    <li>14: проверяй формулы, ссылки и сортировку всего диапазона.</li>
+                    <li>Перед сдачей проверяй формат и имя файла.</li>
+                  </ul>
+                </div>
+                <div class="tip">
+                  <h3>Telegram</h3>
+                  <p>На сайте теперь есть отдельная обратная связь и ссылка на канал.</p>
+                  <div class="hero-actions" style="margin-top:12px">
+                    <a class="button tg sm" href="https://t.me/name_supports" target="_blank" rel="noopener">Обратная связь</a>
+                    <a class="button sm" href="https://t.me/link_ogeinfo" target="_blank" rel="noopener">ТГ канал</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-page="review" hidden>
+        <div class="glass section-card">
+          <div class="section-head">
+            <div>
+              <h2>Краткий разбор заданий 1–16</h2>
+              <p class="sub">Разворачивай нужный номер и смотри только самое важное.</p>
+            </div>
+          </div>
+          <input class="search" id="reviewSearch" placeholder="Поиск по разбору: IP, логика, таблица, маска…" />
+          <div class="accordion" id="reviewList" style="margin-top:16px"></div>
+        </div>
+      </section>
+
+      <section class="section" data-page="cheats" hidden>
+        <div class="glass section-card">
+          <div class="section-head">
+            <div>
+              <h2>Шпоры по заданиям</h2>
+              <p class="sub">Формулы, короткие подсказки и приёмы, которые удобно повторять перед решением.</p>
+            </div>
+          </div>
+          <input class="search" id="cheatSearch" placeholder="Поиск по шпорам: логарифм, СЧЁТЕСЛИ, URL, Python…" />
+          <div class="accordion" id="cheatList" style="margin-top:16px"></div>
+        </div>
+      </section>
+
+      <section class="section" data-page="exam" hidden>
+        <div class="grid-2">
+          <div class="glass section-card">
+            <div class="section-head">
+              <div>
+                <h2>План экзамена</h2>
+                <p class="sub">Два сценария распределения времени на 150 минут.</p>
+              </div>
+            </div>
+            <div class="toggle-row">
+              <button class="button primary sm" id="planSafe" type="button">Аккуратный режим</button>
+              <button class="button sm" id="planFast" type="button">Быстрый режим</button>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </div>
+
+          <div class="stack">
+            <div class="glass section-card">
+              <div class="section-head">
+                <div>
+                  <h2>Таймер</h2>
+                  <p class="sub">Домашняя тренировка под формат экзамена.</p>
+                </div>
+              </div>
+              <div class="timer-box">
+                <div class="timer-display" id="timerDisplay">02:30:00</div>
+                <div class="timer-note">Запусти таймер и попробуй решить вариант без отвлечений.</div>
+                <div class="hero-actions" style="margin-top:16px">
+                  <button class="button primary" id="timerStart" type="button">Старт</button>
+                  <button class="button" id="timerPause" type="button">Пауза</button>
+                  <button class="button ghost" id="timerReset" type="button">Сброс</button>
+                </div>
+                <div class="target-grid" id="targets"></div>
+                <div class="message-box" id="targetMessage"></div>
+              </div>
+            </div>
+
+            <div class="glass section-card">
+              <div class="section-head">
+                <div>
+                  <h2>Связь и канал</h2>
+                  <p class="sub">Отдельно добавлены две телеграм-кнопки.</p>
+                </div>
+              </div>
+              <div class="cta-grid">
+                <div class="cta-card">
+                  <h3>Обратная связь</h3>
+                  <p>Для вопросов по сайту, ошибкам и предложениям.</p>
+                  <a class="button tg" href="https://t.me/name_supports" target="_blank" rel="noopener">Написать</a>
+                </div>
+                <div class="cta-card">
+                  <h3>ТГ канал</h3>
+                  <p>Для обновлений сайта и полезных материалов.</p>
+                  <a class="button primary" href="https://t.me/link_ogeinfo" target="_blank" rel="noopener">Открыть канал</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        OGEINFO — учебный сайт. Данные по структуре, баллам и заданиям приведены в учебных целях. Перед экзаменом всё равно сверяйся с актуальными материалами ФИПИ и требованиями своей школы.
+      </footer>
+    </main>
+
+    <div class="fab" id="fabMenu">
+      <div class="fab-actions">
+        <button class="fab-action" type="button" data-route="structure"><span class="icon">1</span>Структура</button>
+        <button class="fab-action" type="button" data-route="review"><span class="icon">2</span>Разбор</button>
+        <button class="fab-action" type="button" data-route="cheats"><span class="icon">3</span>Шпоры</button>
+        <button class="fab-action" type="button" data-route="exam"><span class="icon">4</span>Экзамен</button>
+        <a class="fab-action" href="https://t.me/name_supports" target="_blank" rel="noopener"><span class="icon">✉</span>Обратная связь</a>
+        <a class="fab-action" href="https://t.me/link_ogeinfo" target="_blank" rel="noopener"><span class="icon">↗</span>ТГ канал</a>
+      </div>
+      <button class="fab-btn" id="fabToggle" type="button" aria-label="Открыть быстрое меню">
+        <div class="dots"><span></span><span></span><span></span></div>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const exam = {
+      tasksCount: 16,
+      maxScore: 21,
+      durationMin: 150,
+      passMin: 5,
+      profileRecommended: 14,
+      grades: [
+        { mark: "2", range: "0–4" },
+        { mark: "3", range: "5–10" },
+        { mark: "4", range: "11–16" },
+        { mark: "5", range: "17–21" },
+      ]
+    };
+
+    const tasks = [
+      {
+        n: 1,
+        topic: "Оценивать объём памяти для хранения текстовых данных",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Определи, что считается символом: буква/цифра/пробел/знак — обычно каждый символ учитывается.",
+          "Найди мощность алфавита (N). Если дан набор: русские/латинские, цифры, знаки — аккуратно суммируй.",
+          "Бит на символ: k = ⌈log2(N)⌉. Если N не степень двойки — обязательно округляй вверх.",
+          "Информационный объём: V = k · L (в битах), где L — число символов.",
+          "Переводи единицы: 1 байт = 8 бит; 1 КБ = 1024 байта; 1 МБ = 1024 КБ.",
+          "Если спрашивают «минимально возможный объём», всегда используй округление вверх по k."
+        ],
+        example: {
+          q: "Алфавит из 32 символов. Сообщение длиной 120 символов. Найди минимальный объём памяти.",
+          steps: [
+            "k = ⌈log2(32)⌉ = 5 бит/символ.",
+            "V = 5 · 120 = 600 бит.",
+            "600/8 = 75 байт."
+          ],
+          answer: "75 байт"
+        },
+        cheats: [
+          "Бит на символ: ⌈log2(N)⌉. Быстрые значения: 2→1, 4→2, 8→3, 16→4, 32→5, 64→6, 128→7, 256→8.",
+          "Если N между степенями двойки: 33–64 → 6 бит; 65–128 → 7 бит; 129–256 → 8 бит.",
+          "Переводы: 1 байт = 8 бит; 1 КБ = 1024 байта; 1 МБ = 1024 КБ.",
+          "Ловушка: пробел — тоже символ (если не сказано иначе).",
+          "Ловушка: если дано «не менее N символов» — мощность алфавита берут ровно N (минимально).",
+          "Проверка здравого смысла: объём должен расти линейно с длиной сообщения."
+        ]
+      },
+      {
+        n: 2,
+        topic: "Декодировать (и/или кодировать) кодовую последовательность",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Уточни тип кода: фиксированной длины или префиксный (переменной длины).",
+          "Фиксированная длина: дели последовательность на блоки одинаковой длины (k бит).",
+          "Префиксный код: разбирай слева направо, каждый раз выбирая код, который совпал полностью.",
+          "Если встречается неоднозначность — проверь условие: в ОГЭ обычно коды подобраны так, что разбор однозначен.",
+          "После декодирования проверь: вся строка должна быть разобрана без остатка.",
+          "Если нужно кодировать — просто выпиши коды символов по таблице и склей в одну строку."
+        ],
+        example: {
+          q: "Коды: А=0, Б=10, В=11. Декодируй 0110.",
+          steps: [
+            "Разбираем слева направо: 0 → А.",
+            "Осталось 110: 11 → В.",
+            "Осталось 0: 0 → А."
+          ],
+          answer: "АВА"
+        },
+        cheats: [
+          "Префиксный код: ни один код не является началом другого — тогда разбор слева направо однозначен.",
+          "Фиксированная длина: если k бит/символ, то строка делится на куски по k.",
+          "Чтобы не ошибиться: ставь разделители при разборе (0|11|0).",
+          "Если в таблице есть «длинные» и «короткие» коды — начни с проверки коротких (для префиксного это безопасно).",
+          "Ловушка: не путай «код символа» и «номер символа» — код всегда состоит из 0/1."
+        ]
+      },
+      {
+        n: 3,
+        topic: "Определять истинность составного высказывания (логика)",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Сначала перепиши выражение аккуратно (без лишних «в уме»).",
+          "Определи значения переменных (истина/ложь или 1/0) и подставь.",
+          "Соблюдай приоритет: НЕ (¬) → И (∧) → ИЛИ (∨). Скобки главнее всего.",
+          "Если выражение сложное — сделай промежуточные столбики (A, ¬A, A∧B...).",
+          "Если просят найти, при каких значениях истинно — делай мини-таблицу истинности (обычно 4 строки для 2 переменных).",
+          "Проверка: финальный ответ должен быть «истина/ложь» или конкретные наборы значений."
+        ],
+        example: {
+          q: "A=1, B=0. Найди значение ¬A ∨ (A ∧ B).",
+          steps: [
+            "¬A = ¬1 = 0.",
+            "A ∧ B = 1 ∧ 0 = 0.",
+            "0 ∨ 0 = 0 (ложь)."
+          ],
+          answer: "Ложь (0)"
+        },
+        cheats: [
+          "A ∧ B — истина только если оба истинны. A ∨ B — ложь только если оба ложны.",
+          "Законы де Моргана: ¬(A ∧ B)=¬A ∨ ¬B; ¬(A ∨ B)=¬A ∧ ¬B.",
+          "Импликация (если встречается): A → B = ¬A ∨ B.",
+          "Эквивалентность: A ↔ B истинна, когда A и B одинаковы.",
+          "Лайфхак: при подстановке «0» часто упрощает AND, при подстановке «1» — OR."
+        ]
+      },
+      {
+        n: 4,
+        topic: "Анализировать простейшие модели объектов (таблицы/схемы/описания)",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Определи, что является моделью: таблица характеристик, расписание, схема с параметрами.",
+          "Сначала выдели ключевые столбцы/параметры и единицы измерения.",
+          "Далее — отбор по условию (фильтрация) и одно действие: сравнение/сложение/вычитание/поиск максимума.",
+          "Если вариантов несколько — проверь каждый кандидат, не угадывай.",
+          "Смотри на формулировки «не более/не менее/строго больше».",
+          "Проверка: ответ должен быть полностью обоснован данными модели, без предположений."
+        ],
+        example: {
+          q: "По таблице тарифов выбери вариант с минимальной абонплатой при 250 мин разговора (используй данные таблицы).",
+          steps: [
+            "Отбираем тарифы, где включённые минуты ≥ 250 или считаем доплату за превышение.",
+            "Для каждого тарифа считаем итоговую стоимость.",
+            "Сравниваем итоги и выбираем минимальный."
+          ],
+          answer: "Минимальный тариф — тот, у которого итоговая стоимость меньше (после расчёта по условию)."
+        },
+        cheats: [
+          "Шаблон: ДАНО → ОТБОР → ВЫЧИСЛЕНИЕ → СРАВНЕНИЕ → ОТВЕТ.",
+          "Ловушка: единицы измерения (руб/мин, МБ/ГБ) — приведи к одному виду.",
+          "Если требуется «самый выгодный» — почти всегда нужно считать, а не смотреть на один столбец.",
+          "Быстрая проверка: прикидка порядка величины (не могло ли выйти в 10 раз больше/меньше)."
+        ]
+      },
+      {
+        n: 5,
+        topic: "Анализировать простые алгоритмы исполнителя с фиксированным набором команд",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Пойми команды исполнителя и что меняется: координаты, направление, состояние клетки.",
+          "Выпиши стартовые данные (позиция, ориентация, ограничения поля/стены).",
+          "Симулируй аккуратно: удобно вести (x,y) и направление стрелкой.",
+          "Если есть цикл — вычисляй результат одного повторения и умножай, если действия одинаковые.",
+          "Если есть условия — проверяй их по факту состояния (стена/метка/граница).",
+          "Проверка: не выходит ли исполнитель за границы и не зацикливается ли алгоритм."
+        ],
+        example: {
+          q: "Исполнитель стартует в (0,0), смотрит вправо. Команды: ВПЕРЁД 3, ВВЕРХ 2. Где окажется?",
+          steps: [
+            "ВПЕРЁД 3: (3,0).",
+            "ВВЕРХ 2: (3,2)."
+          ],
+          answer: "(3,2)"
+        },
+        cheats: [
+          "Заведи таблицу: шаг | команда | (x,y) | направление.",
+          "Если повороты: 0°=вправо, 90°=вверх, 180°=влево, 270°=вниз (или как в условии).",
+          "Лайфхак: рисуй путь на черновике по клеткам — меньше шанс ошибиться.",
+          "При цикле: найди «шаг цикла» по координатам (сколько клеток за 1 повтор).",
+          "Ловушка: команды могут быть «влево/вправо» как поворот, а не движение."
+        ]
+      },
+      {
+        n: 6,
+        topic: "Формально исполнять алгоритмы, записанные на языке программирования",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Выпиши начальные значения переменных.",
+          "Пойми, сколько раз выполнится цикл (границы диапазона, условие while).",
+          "Пошагово изменяй значения: удобно делать трассировку в таблице.",
+          "Следи за целочисленным делением и остатком (div, mod, //, %).",
+          "Если есть ветвления (if) — на каждом шаге проверяй условие отдельно.",
+          "Ответ обычно: значение переменной после окончания или то, что выводится."
+        ],
+        example: {
+          q: "x=0; for i=1..4: x=x+i. Чему равно x?",
+          steps: [
+            "После i=1: x=1.",
+            "После i=2: x=3.",
+            "После i=3: x=6.",
+            "После i=4: x=10."
+          ],
+          answer: "10"
+        },
+        cheats: [
+          "Таблица трассировки — самый надёжный способ не ошибиться.",
+          "Целочисленное деление: 7 div 2 = 3; 7 mod 2 = 1.",
+          "В Python: // — целочисленное деление, % — остаток.",
+          "Ловушка диапазонов: for i=1..n включает n; range(1,n) не включает n.",
+          "Если код печатает несколько значений — выписывай вывод по строкам/через пробел как в условии."
+        ]
+      },
+      {
+        n: 7,
+        topic: "Принципы адресации в сети Интернет (URL/домены/IP — базовый уровень)",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Разбери URL на части: протокол, домен, путь, параметры, якорь.",
+          "Домен: набор уровней через точку (поддомен.второй_уровень.доменная_зона).",
+          "IP (IPv4) — 4 числа 0–255: каждый октет = 8 бит.",
+          "Если спрашивают «адрес сайта» — обычно доменное имя. Если «путь к файлу» — часть после домена.",
+          "Не путай: www часто поддомен, а не «обязательная часть адреса».",
+          "Проверка: что именно просят в ответе — домен/протокол/каталог/файл."
+        ],
+        example: {
+          q: "Разбери https://school.edu.ru/oge/info?year=2026",
+          steps: [
+            "Протокол: https.",
+            "Домен: school.edu.ru.",
+            "Путь: /oge/info.",
+            "Параметр: year=2026."
+          ],
+          answer: "Домен — school.edu.ru"
+        },
+        cheats: [
+          "URL: протокол://домен/путь?параметры#якорь.",
+          "IPv4: 4 октета по 8 бит; диапазон октета 0–255.",
+          "Быстрый перевод октета в двоичный: веса 128 64 32 16 8 4 2 1.",
+          "Ловушка: доменная зона — последняя часть (ru, com, edu и т.п.).",
+          "Если в задании просят «имя сервера» — обычно доменное имя без пути."
+        ]
+      },
+      {
+        n: 8,
+        topic: "Поиск информации в Интернете (запросы, операторы поиска)",
+        level: "П",
+        pts: 1,
+        review: [
+          "Смотри на формулировку: «содержит фразу», «не содержит слово», «обязательно оба слова», «хотя бы одно».",
+          "Кавычки — точная фраза. Минус — исключение слова.",
+          "OR (ИЛИ) — допускает один из вариантов.",
+          "Если дают несколько запросов и спрашивают, какой подойдёт — решай логикой множеств.",
+          "Не путай «все слова рядом» (кавычки) и «встречаются на странице» (без кавычек).",
+          "Проверка: запрос должен удовлетворять всем условиям одновременно."
+        ],
+        example: {
+          q: "Нужны страницы с фразой «ОГЭ информатика», но без слова «ЕГЭ».",
+          steps: [
+            "Точная фраза берётся в кавычки.",
+            "Слово, которое исключаем, ставим с минусом." 
+          ],
+          answer: "\"ОГЭ информатика\" -ЕГЭ"
+        },
+        cheats: [
+          "\"точная фраза\" — искать строго так.",
+          "слово1 -слово2 — исключить слово2.",
+          "слово1 OR слово2 — хотя бы одно.",
+          "Ловушка: без кавычек слова могут быть в разных местах страницы.",
+          "При выборе из вариантов: проверь каждый запрос по условию как по чек-листу."
+        ]
+      },
+      {
+        n: 9,
+        topic: "Анализ информации в виде схем (графы/деревья/таблицы связей)",
+        level: "П",
+        pts: 1,
+        review: [
+          "Определи тип: дерево (без циклов, один путь между вершинами) или граф (могут быть циклы).",
+          "Если задача на путь — выпиши варианты и считай длину: количество ребёр или сумму весов.",
+          "Если задача на количество — аккуратно избегай повторного счёта (особенно в графах).",
+          "Если про «кратчайший путь» в невзвешенном графе — думай слоями (1 шаг, 2 шага...).",
+          "Если взвешенный граф — сравни суммы весов по нескольким конкурентным маршрутам.",
+          "Проверка: каждый переход маршрута должен существовать на схеме."
+        ],
+        example: {
+          q: "Граф: A—B (2), B—C (3), A—C (10). Найди кратчайший путь A→C.",
+          steps: [
+            "Прямой путь A→C вес 10.",
+            "Через B: A→B→C вес 2+3=5.",
+            "5 < 10, значит выгоднее через B."
+          ],
+          answer: "A→B→C (вес 5)"
+        },
+        cheats: [
+          "Список смежности: выпиши для каждой вершины, куда есть ребро (удобно для подсчёта).",
+          "Невзвешенный кратчайший путь: сначала все вершины на расстоянии 1, потом 2 и т.д.",
+          "Взвешенный: сравни суммы по 2–4 очевидным маршрутам (обычно хватает).",
+          "Ловушка: направление ребра (если граф ориентированный).",
+          "Ловушка: вес ребра — это не количество ребёр. Считай то, что требуют."
+        ]
+      },
+      {
+        n: 10,
+        topic: "Запись чисел в разных системах счисления",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Определи направление перевода: из какой системы в какую.",
+          "2↔8: группировка бит по 3. 2↔16: группировка по 4.",
+          "10→основание: деление на основание с остатками (остатки читаются снизу вверх).",
+          "основание→10: разложение по степеням основания.",
+          "В 16-ричной: A=10, B=11, C=12, D=13, E=14, F=15.",
+          "Проверка: при обратном переводе должно получиться исходное число."
+        ],
+        example: {
+          q: "Переведи 110101₂ в десятичную.",
+          steps: [
+            "Разложение: 1·32 + 1·16 + 0·8 + 1·4 + 0·2 + 1·1.",
+            "32+16+4+1 = 53."
+          ],
+          answer: "53"
+        },
+        cheats: [
+          "2→8: группируй справа по 3 бита. 2→16: по 4 бита.",
+          "8→2: каждую цифру в 3 бита; 16→2: в 4 бита.",
+          "основание→10: сумма(цифра · основание^позиция).",
+          "10→основание: дели на основание, собирай остатки снизу вверх.",
+          "Ловушка: нули слева в двоичном могут появляться при группировке (добавляй для кратности 3/4)."
+        ]
+      },
+      {
+        n: 11,
+        topic: "Поиск информации в файлах и каталогах компьютера",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Задание выполняется на ПК: нужно найти файл/папку по имени/маске/расширению/параметрам.",
+          "Сначала сузь область: открой правильную папку (или диск), потом применяй поиск.",
+          "Понимай маски: * — любая последовательность символов; ? — ровно один символ.",
+          "Используй сортировку по имени/дате/размеру и фильтры по расширению.",
+          "Часто требуется не просто найти, а выписать имя/значение из найденного файла.",
+          "Проверка: убедись, что совпало именно по условию (например, расширение/маска/подпапка)."
+        ],
+        example: {
+          q: "Маска report?.txt — какие имена подходят?",
+          steps: [
+            "? означает 1 символ.",
+            "Подходят report1.txt, reportA.txt.",
+            "Не подходит report10.txt (там два символа после report)."
+          ],
+          answer: "report1.txt подходит, report10.txt — нет"
+        },
+        cheats: [
+          "*.txt — все txt, report?.docx — report1/2/А..., но не report10.",
+          "Лучше сначала отфильтровать по расширению, потом по маске имени.",
+          "Ловушка: похожие файлы в разных папках — проверяй путь (каталог).",
+          "Если нужно найти по содержимому — включи поиск по тексту (если разрешено средой).",
+          "Финальный шаг: открой файл и проверь, что он «тот самый»."
+        ]
+      },
+      {
+        n: 12,
+        topic: "Количество и информационный объём файлов, отобранных по условию",
+        level: "Б",
+        pts: 1,
+        review: [
+          "Нужно выбрать файлы по условиям (тип, размер, дата, имя) и посчитать количество и/или суммарный объём.",
+          "Сначала делай отбор (фильтр), потом подсчёт (кол-во/сумма размеров).",
+          "Проверь границы: «не меньше» (≥), «не больше» (≤), «строго больше/меньше».",
+          "Единицы: приводь к одному виду (всё в КБ или всё в байтах).",
+          "Если условия несколько — применяй по шагам, чтобы не потеряться.",
+          "Проверка: сделай контрольный пересчёт, чтобы не пропустить/не добавить лишний файл."
+        ],
+        example: {
+          q: "Есть 6 файлов: 120КБ, 80КБ, 250КБ, 199КБ, 200КБ, 300КБ. Сколько файлов ≥200КБ?",
+          steps: [
+            "Подходят 250, 200, 300.",
+            "199 не подходит (строго меньше 200)."
+          ],
+          answer: "3"
+        },
+        cheats: [
+          "Суммарный объём: складывай в одной единице (например, всё в КБ).",
+          "Граница включительно: ≥ и ≤.",
+          "Ловушка: 1 МБ = 1024 КБ (а не 1000), если в задании явно не сказано иначе.",
+          "На ПК удобно: сначала отсортировать по размеру, затем выбрать диапазон.",
+          "Проверка: количество выбранных файлов должно совпасть с реальным выделением/списком."
+        ]
+      },
+      {
+        n: 13,
+        topic: "Создать презентацию (13.1) или текстовый документ (13.2)",
+        level: "П",
+        pts: 2,
+        review: [
+          "Сначала прочитай требования и выпиши чек-лист: сколько слайдов/страниц, какие объекты, какие шрифты/размеры.",
+          "Создай структуру: заголовки, подпункты, таблицы/изображения (если требуются).",
+          "Оформление: единый стиль, одинаковые отступы, выравнивание, аккуратные списки.",
+          "Не теряй баллы на мелочах: нумерация, подписи, расположение объектов.",
+          "Сохраняй файл в нужном формате и с нужным именем.",
+          "Перед сдачей пройди условие по пунктам и поставь галочки «выполнено»."
+        ],
+        example: {
+          q: "Требование: 4 слайда, на каждом — заголовок, 2–3 пункта списка, на 2-м слайде таблица 3×4. Что делать?",
+          steps: [
+            "Создать 4 слайда с одинаковым макетом заголовка.",
+            "На каждом слайде сделать маркированный список 2–3 пункта.",
+            "На 2-м вставить таблицу 3×4 и выровнять по сетке.",
+            "Сохранить с нужным именем и проверить чек-листом."
+          ],
+          answer: "Главное — выполнить все пункты условия и единообразно оформить"
+        },
+        cheats: [
+          "Чек-лист перед сдачей: количество страниц/слайдов; заголовки; списки; таблицы; изображения; выравнивания; шрифты.",
+          "Сначала контент, потом выравнивание/красота (но стиль должен быть единым).",
+          "Используй направляющие/сетку: одинаковые поля, одинаковый размер заголовков.",
+          "Ловушка: неправильное имя файла/формат — это критично.",
+          "Ловушка: «маркированный» vs «нумерованный» список — делай ровно как требуют.",
+          "Если просят выравнивание — используй встроенные инструменты (по левому краю/по центру и т.п.), а не «на глаз»."
+        ]
+      },
+      {
+        n: 14,
+        topic: "Обработка большого массива данных в электронной таблице",
+        level: "В",
+        pts: 3,
+        review: [
+          "Сначала выясни цель: что нужно посчитать (количество, сумму, среднее, максимум, долю).",
+          "Оцени, нужны ли столбцы-помощники (часто да: 0/1, вычисляемый признак).",
+          "Формулы делай сначала на одной строке, потом копируй вниз.",
+          "Следи за абсолютными ссылками ($A$1), иначе при копировании всё «поплывёт».",
+          "После формул — фильтрация/сортировка/подсчёты по условию.",
+          "Финальная проверка: выборочно пересчитай 2–3 строки вручную."
+        ],
+        example: {
+          q: "Нужно посчитать количество строк, где Регион=Север и Продажи ≥ 100.",
+          steps: [
+            "Используем СЧЁТЕСЛИМН по двум условиям.",
+            "Диапазоны должны быть одинаковой длины (например, C:C и D:D)."
+          ],
+          answer: "=СЧЁТЕСЛИМН(C:C;\"Север\";D:D;\">=100\")"
+        },
+        cheats: [
+          "Абсолютная ссылка: $A$1 (не меняется при копировании).",
+          "Частые функции: ЕСЛИ, И, ИЛИ, СЧЁТЕСЛИ, СЧЁТЕСЛИМН, СУММЕСЛИ, СУММЕСЛИМН, СРЗНАЧ, МАКС, МИН.",
+          "Условия текстом: \">=10\", \"<5\", \"=Да\".",
+          "Лайфхак: столбец-помощник (0/1) → сумму легко считать СУММ.",
+          "Ловушка: разделитель аргументов может быть ; или , (зависит от локали).",
+          "Ловушка: проценты и округление — применяй ровно как сказано (ОКРУГЛ/ОКРУГЛВВЕРХ/ОКРУГЛВНИЗ).",
+          "Проверка: сортировка не должна «разорвать» строки — сортируй весь диапазон таблицы, а не один столбец."
+        ]
+      },
+      {
+        n: 15,
+        topic: "Программы для заданного исполнителя (алгоритм/управление исполнителем)",
+        level: "В",
+        pts: 2,
+        review: [
+          "Пойми среду: что считается препятствием, как проверять «можно ли шагнуть», какие команды доступны.",
+          "Сначала придумай человеческий алгоритм: что повторяется, где проверка условия.",
+          "Обычно нужна конструкция: ПОКА (условие) ДЕЛАТЬ (действие).",
+          "Если нужно обойти препятствия — определи правило обхода и повторяемый шаблон.",
+          "Проверь останов: алгоритм не должен уйти в бесконечный цикл.",
+          "Проверь крайние случаи: старт уже у стены, путь сразу свободен и т.п."
+        ],
+        example: {
+          q: "Задача: двигаться вправо, пока впереди нет стены.",
+          steps: [
+            "Используем цикл с проверкой условия «впереди свободно».",
+            "Внутри цикла — команда шаг вперёд." 
+          ],
+          answer: "ПОКА впереди свободно ДЕЛАТЬ шаг вперёд"
+        },
+        cheats: [
+          "Шаблон: ПОКА (условие) ДЕЛАТЬ (действие).",
+          "Если нужно «дойти до стены»: условие = «впереди свободно».",
+          "Если нужно «пока не достиг цели»: условие = «не на цели/не на метке».",
+          "Ловушка: условие должно меняться внутри цикла (иначе бесконечность).",
+          "Проверка: прогон вручную на 2–3 сценариях (самый короткий, средний, самый сложный)."
+        ]
+      },
+      {
+        n: 16,
+        topic: "Программа на универсальном языке программирования (Python/Паскаль/и др.)",
+        level: "В",
+        pts: 2,
+        review: [
+          "Разбей задачу: ввод → обработка → вывод. Это снижает ошибки.",
+          "Сначала напиши простое решение, потом добавляй улучшения (оптимизация обычно не нужна).",
+          "Частые типы задач: сумма/счётчик/максимум/минимум; работа с последовательностью; простая фильтрация.",
+          "Не забудь про инициализацию переменных (сумма=0, счётчик=0 и т.д.).",
+          "Тестируй на маленьких примерах, где ответ очевиден.",
+          "Проверка: нет ли деления на ноль, неверной границы цикла, пустого ввода."
+        ],
+        example: {
+          q: "Дана последовательность чисел, заканчивается 0. Найди сумму всех чисел до 0.",
+          steps: [
+            "Инициализируем sum=0.",
+            "Читаем числа в цикле, пока число не равно 0.",
+            "Добавляем к сумме и читаем следующее." 
+          ],
+          answer: "Python: sum=0; x=int(input()); while x!=0: sum+=x; x=int(input()); print(sum)"
+        },
+        cheats: [
+          "Каркас: прочитать → обработать (цикл/if) → вывести.",
+          "Типовые операции: сумма, счётчик, максимум/минимум, фильтр по условию.",
+          "Лайфхак: проверяй крайние случаи (одно число, все числа одинаковые, отрицательные — если допустимы).",
+          "Ловушка: неправильная граница цикла (например, пропустили первый/последний элемент).",
+          "Ловушка: тип данных (строка vs число). В Python: int(), float().",
+          "Проверка: сделай ручной тест на 3–5 значениях и сравни с тем, что выводит программа."
+        ]
+      }
+    ];
+
+    const qs = (sel, root=document) => root.querySelector(sel);
+    const qsa = (sel, root=document) => [...root.querySelectorAll(sel)];
+
+    function escapeHtml(s){
+      return String(s)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'",'&#039;');
+    }
+
+    function minutesToHMS(min){
+      const total = min * 60;
+      const h = Math.floor(total/3600);
+      const m = Math.floor((total%3600)/60);
+      return `${h} ч ${m} мин`;
+    }
+
+    function formatTimer(sec){
+      const s = Math.max(0, Math.floor(sec));
+      const hh = String(Math.floor(s/3600)).padStart(2,'0');
+      const mm = String(Math.floor((s%3600)/60)).padStart(2,'0');
+      const ss = String(s%60).padStart(2,'0');
+      return `${hh}:${mm}:${ss}`;
+    }
+
+    const routes = ['structure','review','cheats','exam'];
+
+    function setRoute(route){
+      const next = routes.includes(route) ? route : 'structure';
+      qsa('[data-page]').forEach(section => {
+        section.hidden = section.getAttribute('data-page') !== next;
+      });
+      qsa('[data-route]').forEach(btn => {
+        if (!btn.closest('[data-page]')) {
+          if (btn.getAttribute('data-route') === next) btn.setAttribute('aria-current','page');
+          else btn.removeAttribute('aria-current');
+        }
+      });
+      history.replaceState(null, '', `#${next}`);
+      const fab = qs('#fabMenu');
+      fab.classList.remove('open');
+    }
+
+    function bindRouteButtons(root=document){
+      qsa('[data-route]', root).forEach(btn => {
+        btn.addEventListener('click', () => setRoute(btn.getAttribute('data-route')));
+      });
+    }
+
+    bindRouteButtons();
+
+    qs('#kpiMax').textContent = `${exam.maxScore}`;
+    qs('#kpiTime').textContent = `${minutesToHMS(exam.durationMin)}`;
+    qs('#kpiCount').textContent = `${exam.tasksCount}`;
+    qs('#kpiMin').textContent = `${exam.passMin}`;
+
+    const LS_KEY = 'ogeinfo_progress_v2';
+    const progress = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    function saveProgress(){
+      localStorage.setItem(LS_KEY, JSON.stringify(progress));
+    }
+
+    function buildStructure(filter=''){
+      const body = qs('#structureBody');
+      body.innerHTML = '';
+      const f = filter.trim().toLowerCase();
+      tasks
+        .filter(t => !f || (`${t.n} ${t.topic} ${t.review.join(' ')} ${t.cheats.join(' ')}`.toLowerCase().includes(f)))
+        .forEach(t => {
+          const row = document.createElement('tr');
+          const checked = !!progress[`t${t.n}`];
+          row.innerHTML = `
+            <td><span class="badge">${t.n}</span></td>
+            <td>${escapeHtml(t.topic)}</td>
+            <td class="mono">${escapeHtml(t.level)}</td>
+            <td class="mono">${t.pts}</td>
+            <td>
+              <label style="display:flex;align-items:center;gap:8px;color:var(--muted)">
+                <input type="checkbox" data-done="${t.n}" ${checked ? 'checked' : ''} />
+                готово
+              </label>
+            </td>
+          `;
+          body.appendChild(row);
+        });
+      qsa('input[data-done]', body).forEach(box => {
+        box.addEventListener('change', () => {
+          progress[`t${box.getAttribute('data-done')}`] = box.checked;
+          saveProgress();
+        });
+      });
+    }
+
+    function buildGrades(){
+      const root = qs('#gradeGrid');
+      root.innerHTML = '';
+      exam.grades.forEach(g => {
+        const card = document.createElement('div');
+        card.className = 'grade-card';
+        card.innerHTML = `<div class="mark">${g.mark}</div><div class="range">${g.range}</div>`;
+        root.appendChild(card);
+      });
+    }
+
+    function buildAccordion(rootId, field, filter=''){
+      const root = qs(rootId);
+      root.innerHTML = '';
+      const f = filter.trim().toLowerCase();
+      tasks
+        .filter(t => !f || (`${t.n} ${t.topic} ${t[field].join(' ')} ${t.example ? (t.example.q + ' ' + (t.example.steps || []).join(' ') + ' ' + (t.example.answer || '')) : ''}`.toLowerCase().includes(f)))
+        .forEach(t => {
+          const d = document.createElement('details');
+          d.className = 'card-item';
+          d.innerHTML = `
+            <summary>
+              <span class="badge">${t.n}</span>
+              <div class="sum-main">
+                <div class="sum-title">${escapeHtml(t.topic)}</div>
+              </div>
+              <div class="sum-meta">
+                <span class="sum-mini">${escapeHtml(t.level)}</span>
+                <span class="sum-mini">${t.pts} б.</span>
+              </div>
+            </summary>
+            <div class="details-content">
+              <ul>${t[field].map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+              ${t.example ? `
+                <div class="example">
+                  <div class="example-title">Мини-пример</div>
+                  <div class="mono">${escapeHtml(t.example.q || '')}</div>
+                  <ul>${(t.example.steps || []).map(step => `<li>${escapeHtml(step)}</li>`).join('')}</ul>
+                  <div class="mono"><strong>Ответ:</strong> ${escapeHtml(t.example.answer || '')}</div>
+                </div>
+              ` : ''}
+            </div>
+          `;
+          root.appendChild(d);
+        });
+    }
+
+    buildStructure();
+    buildGrades();
+    buildAccordion('#reviewList', 'review');
+    buildAccordion('#cheatList', 'cheats');
+
+    qs('#taskSearch').addEventListener('input', e => buildStructure(e.target.value));
+    qs('#reviewSearch').addEventListener('input', e => buildAccordion('#reviewList', 'review', e.target.value));
+    qs('#cheatSearch').addEventListener('input', e => buildAccordion('#cheatList', 'cheats', e.target.value));
+
+    const plans = {
+      safe: [
+        {t:'00:00–00:10', d:'Разведка: быстро просмотри весь вариант, отметь лёгкие и сложные номера.'},
+        {t:'00:10–00:55', d:'Задания 1–10: забери максимум быстрых баллов, не зависай на одном номере.'},
+        {t:'00:55–01:15', d:'11–12: аккуратно проработай файлы, каталоги и условия.'},
+        {t:'01:15–01:45', d:'13: выполни документ или презентацию строго по чек-листу.'},
+        {t:'01:45–02:15', d:'14: таблица, формулы, проверка ссылок и выборочный контроль.'},
+        {t:'02:15–02:25', d:'15–16: сделать рабочий вариант и прогнать на маленьких тестах.'},
+        {t:'02:25–02:30', d:'Финальная проверка: ответы, файлы, форматы, сохранение.'}
+      ],
+      fast: [
+        {t:'00:00–00:07', d:'Быстрое сканирование варианта и порядок решения.'},
+        {t:'00:07–00:45', d:'1–12: забирай основную базу баллов.'},
+        {t:'00:45–01:10', d:'13: выполнить и пройтись по требованиям ещё раз.'},
+        {t:'01:10–01:55', d:'14: спокойно добить таблицу и сверить результаты.'},
+        {t:'01:55–02:20', d:'15–16: код/алгоритм и проверка крайних случаев.'},
+        {t:'02:20–02:30', d:'Перепроверка и сохранение всего.'}
+      ]
+    };
+
+    function renderTimeline(kind){
+      const root = qs('#timeline');
+      root.innerHTML = '';
+      plans[kind].forEach(item => {
+        const node = document.createElement('div');
+        node.className = 'slot';
+        node.innerHTML = `<div class="time">${item.t}</div><div class="desc">${escapeHtml(item.d)}</div>`;
+        root.appendChild(node);
+      });
+      if (kind === 'safe') {
+        qs('#planSafe').classList.add('primary');
+        qs('#planFast').classList.remove('primary');
+      } else {
+        qs('#planFast').classList.add('primary');
+        qs('#planSafe').classList.remove('primary');
+      }
+    }
+    qs('#planSafe').addEventListener('click', () => renderTimeline('safe'));
+    qs('#planFast').addEventListener('click', () => renderTimeline('fast'));
+    renderTimeline('safe');
+
+    const timerDisplay = qs('#timerDisplay');
+    const targetMessage = qs('#targetMessage');
+    let timer = {
+      totalSec: exam.durationMin * 60,
+      remainingSec: exam.durationMin * 60,
+      running: false,
+      id: null
+    };
+
+    function tick(){
+      if (!timer.running) return;
+      timer.remainingSec -= 1;
+      timerDisplay.textContent = formatTimer(timer.remainingSec);
+      if (timer.remainingSec <= 0) {
+        timer.running = false;
+        clearInterval(timer.id);
+        timer.id = null;
+        timerDisplay.textContent = '00:00:00';
+        targetMessage.textContent = 'Время вышло. Проверь результаты и ошибки.';
+      }
+    }
+    function startTimer(){
+      if (timer.running) return;
+      timer.running = true;
+      if (!timer.id) timer.id = setInterval(tick, 1000);
+    }
+    function pauseTimer(){ timer.running = false; }
+    function resetTimer(){
+      timer.running = false;
+      timer.remainingSec = timer.totalSec;
+      timerDisplay.textContent = formatTimer(timer.remainingSec);
+      targetMessage.textContent = '';
+    }
+    qs('#timerStart').addEventListener('click', startTimer);
+    qs('#timerPause').addEventListener('click', pauseTimer);
+    qs('#timerReset').addEventListener('click', resetTimer);
+    timerDisplay.textContent = formatTimer(timer.remainingSec);
+
+    const targets = [
+      {label:'Сдать (≥5)', text:'Сначала закрепи 1–12. Это самый быстрый путь к проходному баллу.'},
+      {label:'Оценка 4 (≥11)', text:'После базы добей 13 и часть 14 — так легче выйти на четвёрку.'},
+      {label:'Профиль (≈15)', text:'Нужна уверенная база плюс хорошая компьютерная часть.'},
+      {label:'Пятёрка (≥17)', text:'Нужна стабильность без потерь на мелочах и аккуратная проверка.'}
+    ];
+    const targetRoot = qs('#targets');
+    targets.forEach(item => {
+      const btn = document.createElement('button');
+      btn.className = 'button sm';
+      btn.type = 'button';
+      btn.textContent = item.label;
+      btn.addEventListener('click', () => {
+        targetMessage.textContent = item.text;
+      });
+      targetRoot.appendChild(btn);
+    });
+
+    const fabMenu = qs('#fabMenu');
+    qs('#fabToggle').addEventListener('click', () => fabMenu.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!fabMenu.contains(e.target)) fabMenu.classList.remove('open');
+    });
+
+    let captchaState = {a:0, b:0, answer:0};
+    function makeCaptcha(){
+      const a = Math.floor(Math.random() * 8) + 2;
+      const b = Math.floor(Math.random() * 8) + 1;
+      captchaState = {a, b, answer: a + b};
+      qs('#captchaQuestion').textContent = `${a} + ${b} = ?`;
+      qs('#captchaInput').value = '';
+      qs('#captchaError').textContent = '';
+      qs('#captchaInput').focus();
+    }
+
+    const loadingMessages = [
+      'Подготавливаем структуру экзамена и быстрые шпоры.',
+      'Загружаем разборы заданий 1–16.',
+      'Подключаем таймер и быстрые переходы.',
+      'Почти готово — открываем сайт.'
+    ];
+
+    function runFakeLoading(){
+      qs('#captchaOverlay').hidden = true;
+      const loading = qs('#loadingOverlay');
+      const fill = qs('#loadingFill');
+      const text = qs('#loadingText');
+      const status = qs('#loadingStatus');
+      loading.hidden = false;
+      let progress = 0;
+      let index = 0;
+      text.textContent = loadingMessages[0];
+      const timer = setInterval(() => {
+        progress += Math.floor(Math.random() * 14) + 7;
+        if (progress > 100) progress = 100;
+        fill.style.width = `${progress}%`;
+        status.textContent = `${progress}%`;
+        if (progress > 25) index = 1;
+        if (progress > 55) index = 2;
+        if (progress > 80) index = 3;
+        text.textContent = loadingMessages[index];
+        if (progress >= 100) {
+          clearInterval(timer);
+          setTimeout(() => {
+            loading.hidden = true;
+            qs('#appShell').classList.remove('hidden');
+            document.body.classList.remove('locked');
+            setRoute((location.hash || '#structure').replace('#', ''));
+          }, 350);
+        }
+      }, 160);
+    }
+
+    qs('#captchaRefresh').addEventListener('click', makeCaptcha);
+    qs('#captchaSubmit').addEventListener('click', () => {
+      const value = Number(qs('#captchaInput').value.trim());
+      if (value === captchaState.answer) {
+        runFakeLoading();
+      } else {
+        qs('#captchaError').textContent = 'Ответ неверный. Попробуй ещё раз.';
+        qs('#captchaInput').select();
+      }
+    });
+    qs('#captchaInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') qs('#captchaSubmit').click();
+    });
+
+    makeCaptcha();
+  </script>
+</body>
+</html>
